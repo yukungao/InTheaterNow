@@ -17,6 +17,7 @@ public interface User {
 	
 	//The User purchase info
 	long getCreditCardNumber();
+	long setCreditCardNumber();
 	
 	List<UserPurchasesHistory> getUserPurchasesHistory();
 	void addUserPurchasesHistory(UserPurchasesHistory userPurchasesHistory);

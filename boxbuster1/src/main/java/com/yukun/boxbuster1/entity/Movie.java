@@ -10,7 +10,7 @@ public interface Movie {
 	// Title, Genre, MovieCast
 	String getTitle();
 	String getGenre();
-	List<String> getMovieCast();
+	List<String> getMovieCasts();
 	
 	// Decide if it could be in movie Theater
 	public enum Status{
@@ -22,5 +22,6 @@ public interface Movie {
 	Status getMovieStatus();
 	
 	//For filtering by Rating
-	float getIMDbRating();
+	float getIMDBRating();
+
 }
