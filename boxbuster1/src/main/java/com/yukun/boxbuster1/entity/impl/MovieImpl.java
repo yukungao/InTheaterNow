@@ -13,62 +13,48 @@ public class MovieImpl implements Movie {
 	private float iMDBRating;
 	private List<String> movieCasts;
 	
+	@Override
 	public long getId() {
-		
-		return this.id;
+		return id;
 	}
-	
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+	@Override
 	public String getTitle() {
-		return this.title;
+		return title;
 	}
-	
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+	@Override
 	public String getGenre() {
-		
-		return this.genre;
+		return genre;
 	}
-	
 	public void setGenre(String genre) {
-		
 		this.genre = genre;
-		
 	}
-	
-	public List<String> getMovieCasts() {
-
-		return this.movieCasts;
-	}
-	
-	public void addToMovieCasts(String cast) {
-		
-	}
-	
+	@Override
 	public Status getMovieStatus() {
-		
-		return this.movieStatus;
+		return movieStatus;
 	}
-	
-	public void setMovieStatus(Status status) {
-		this.movieStatus = status;
+	public void setMovieStatus(Status movieStatus) {
+		this.movieStatus = movieStatus;
 	}
-	
-	
+	@Override
 	public float getIMDBRating() {
-		
-		return this.iMDBRating;
+		return iMDBRating;
+	}
+	public void setIMDBRating(float iMDBRating) {
+		this.iMDBRating = iMDBRating;
 	}
 	
-	public void setIMDBRating(float rating) {
-		
-		this.iMDBRating = rating;
+	@Override
+	public List<String> getMovieCasts() {
+		return movieCasts;
 	}
-	
+	public void setMovieCasts(List<String> movieCasts) {
+		this.movieCasts = movieCasts;
+	}
 	
 }

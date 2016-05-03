@@ -5,15 +5,14 @@ public interface Ticket {
 	
 	long getId();
 	
-	long getMovie(long movieId);
+	float getPrice();
+	
+	Movie getMovie();
+	
+	Theater getTheater();
 	
 	Date getMovieStartTime();
 	
 	Date getMovieEndTime();
-	
-	float getPrice();
-	
-	//How to design this part?
-	Theather getTheather();
-	
+
 }

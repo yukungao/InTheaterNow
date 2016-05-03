@@ -1,5 +1,6 @@
 package com.yukun.boxbuster1.entity.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.yukun.boxbuster1.entity.Address;
@@ -17,13 +18,12 @@ public class UserImpl implements User{
 	
 	private String pin;
 	
-	private long credicardnumber;
+	private long creditcardnumber;
 	
 	private List<UserPurchasesHistory> userPurchasesHistory;
 	
 	public UserImpl(){}
 
-	
 	@Override
 	public long getId() {
 		return id;
@@ -34,7 +34,7 @@ public class UserImpl implements User{
 	}
 
 	@Override
-	public String getFirstname() {
+	public String getFirstName() {
 		return firstname;
 	}
 
@@ -43,10 +43,10 @@ public class UserImpl implements User{
 	}
 
 	@Override
-	public String getLastname() {
+	public String getLastName() {
 		return lastname;
 	}
-
+	
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
@@ -69,25 +69,26 @@ public class UserImpl implements User{
 		this.pin = pin;
 	}
 
-	public long getCredicardnumber() {
-		return credicardnumber;
+	@Override
+	public long getCreditCardNumber() {
+		// TODO Auto-generated method stub
+		return creditcardnumber;
+	}
+	
+	public void setCreditcardnumber(long creditcardnumber) {
+		this.creditcardnumber = creditcardnumber;
 	}
 
-	public void setCredicardnumber(long credicardnumber) {
-		this.credicardnumber = credicardnumber;
-	}
-
+	@Override
 	public List<UserPurchasesHistory> getUserPurchasesHistory() {
 		return userPurchasesHistory;
 	}
 
+	@Override
 	public void addUserPurchasesHistory(UserPurchasesHistory userPurchasesHistory) {
 		if(this.userPurchasesHistory == null) {
 			this.userPurchasesHistory = new ArrayList<UserPurchasesHistory>();
 		}
 		this.userPurchasesHistory.add(userPurchasesHistory);
-	}	
-	
-	
-	
+	}
 }
