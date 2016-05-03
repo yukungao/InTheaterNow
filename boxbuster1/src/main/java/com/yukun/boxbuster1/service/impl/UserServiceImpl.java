@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 import com.yukun.boxbuster1.entity.User;
 import com.yukun.boxbuster1.service.UserService;
 
-public class UserServiceImpl{
+public class UserServiceImpl implements UserService{
 
 }
