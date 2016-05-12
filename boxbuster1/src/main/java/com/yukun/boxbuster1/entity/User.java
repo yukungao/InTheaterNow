@@ -10,6 +10,7 @@ public interface User {
 	long getId();	
 	String getPin();
 	
+	
 	//The User basic info
 	String getFirstName();
 	String getLastName();
@@ -17,7 +18,7 @@ public interface User {
 	
 	//The User purchase info
 	long getCreditCardNumber();
-
+	float getBalance();
 	
 	List<UserPurchasesHistory> getUserPurchasesHistory();
 	void addUserPurchasesHistory(UserPurchasesHistory userPurchasesHistory);

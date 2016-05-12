@@ -20,6 +20,10 @@ public class UserImpl implements User{
 	
 	private long creditcardnumber;
 	
+	
+
+	private float balance;
+	
 	private List<UserPurchasesHistory> userPurchasesHistory;
 	
 	public UserImpl(){}
@@ -78,7 +82,16 @@ public class UserImpl implements User{
 	public void setCreditcardnumber(long creditcardnumber) {
 		this.creditcardnumber = creditcardnumber;
 	}
+	
+	@Override
+	public float getBalance() {
+		return balance;
+	}
 
+	public void setBalance(float balance) {
+		this.balance = balance;
+	}
+	
 	@Override
 	public List<UserPurchasesHistory> getUserPurchasesHistory() {
 		return userPurchasesHistory;

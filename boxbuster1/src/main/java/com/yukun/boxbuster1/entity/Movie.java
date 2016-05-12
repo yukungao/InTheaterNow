@@ -12,15 +12,6 @@ public interface Movie {
 	String getGenre();
 	List<String> getMovieCasts();
 	
-	// Decide if it could be in movie Theater
-	public enum Status{
-		Not_Release,
-		IN_Theatres,
-		OUT_Theatres
-	}
-	
-	Status getMovieStatus();
-	
 	//For filtering by Rating
 	float getIMDBRating();
 

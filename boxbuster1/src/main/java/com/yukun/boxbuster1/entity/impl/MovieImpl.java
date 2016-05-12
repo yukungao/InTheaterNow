@@ -9,7 +9,6 @@ public class MovieImpl implements Movie {
 	private long id;
 	private String title;
 	private String genre;
-	private Status movieStatus;
 	private float iMDBRating;
 	private List<String> movieCasts;
 	
@@ -33,13 +32,6 @@ public class MovieImpl implements Movie {
 	}
 	public void setGenre(String genre) {
 		this.genre = genre;
-	}
-	@Override
-	public Status getMovieStatus() {
-		return movieStatus;
-	}
-	public void setMovieStatus(Status movieStatus) {
-		this.movieStatus = movieStatus;
 	}
 	@Override
 	public float getIMDBRating() {

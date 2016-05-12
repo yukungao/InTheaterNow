@@ -14,5 +14,7 @@ public interface Ticket {
 	Date getMovieStartTime();
 	
 	Date getMovieEndTime();
+	
+	long getQRCode();
 
 }
