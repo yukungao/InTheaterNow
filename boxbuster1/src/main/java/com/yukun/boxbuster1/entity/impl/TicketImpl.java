@@ -1,5 +1,6 @@
 package com.yukun.boxbuster1.entity.impl;
 import java.util.Date;
+import java.util.UUID;
 
 import com.yukun.boxbuster1.entity.Movie;
 import com.yukun.boxbuster1.entity.Theater;
@@ -13,7 +14,7 @@ public class TicketImpl implements Ticket {
 	private Theater theater;
 	private Date movieStartTime;
 	private Date movieEndTime;
-	private long qrCode;
+	private UUID qrCode;
 	
 	@Override
 	public float getPrice() {
@@ -61,12 +62,12 @@ public class TicketImpl implements Ticket {
 	}
 	
 	@Override
-	public long getQRCode() {
+	public UUID getQRCode() {
 		return qrCode;
 	}
 
-	public void setQrCode(long qrCode) {
-		this.qrCode = qrCode;
+	public void setQRCode(UUID qrCode2) {
+		this.qrCode = qrCode2;
 	}
 	
 }

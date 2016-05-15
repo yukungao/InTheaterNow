@@ -1,5 +1,6 @@
 package com.yukun.boxbuster1.entity;
 import java.util.Date;
+import java.util.UUID;
 
 public interface Ticket {
 	
@@ -15,6 +16,6 @@ public interface Ticket {
 	
 	Date getMovieEndTime();
 	
-	long getQRCode();
+	UUID getQRCode();
 
 }

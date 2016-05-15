@@ -22,4 +22,5 @@ public interface User {
 	
 	List<UserPurchasesHistory> getUserPurchasesHistory();
 	void addUserPurchasesHistory(UserPurchasesHistory userPurchasesHistory);
+	void costBalance(float price);
 }

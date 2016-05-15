@@ -88,8 +88,14 @@ public class UserImpl implements User{
 		return balance;
 	}
 
+	
 	public void setBalance(float balance) {
 		this.balance = balance;
+	}
+	
+	@Override
+	public void costBalance(float price) {
+		this.balance = balance - price;
 	}
 	
 	@Override

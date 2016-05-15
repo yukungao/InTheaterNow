@@ -30,4 +30,10 @@ public class UserPurchasesHistoryImpl implements UserPurchasesHistory {
 	public void setTicket(Ticket ticket) {
 		this.ticket = ticket;
 	}
+	
+	public UserPurchasesHistoryImpl(Ticket ticket) {
+
+		this.ticket = ticket;
+	}
+	
 }

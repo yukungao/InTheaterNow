@@ -51,5 +51,4 @@ public class MovieRepositoryImpl implements MovieRepository {
 		this.sessionFactory.getCurrentSession().update(movie);
 		
 	}
-	
 }

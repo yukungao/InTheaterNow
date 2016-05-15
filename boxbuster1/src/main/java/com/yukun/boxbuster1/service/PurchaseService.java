@@ -1,5 +1,7 @@
 package com.yukun.boxbuster1.service;
 
-public interface PurchaseService {
+import com.yukun.boxbuster1.entity.impl.TicketImpl;
 
+public interface PurchaseService {
+	void buyTicket(TicketImpl ticket);
 }
