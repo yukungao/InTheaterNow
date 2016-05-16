@@ -3,10 +3,10 @@ package com.yukun.boxbuster1.entity;
 import com.yukun.boxbuster1.entity.User;
 
 public interface Address {
-	String getStreet1();
+	String getNumber();
+	String getStreet();
 	String getCity();
 	String getState();
-	String getZip();
-	User getUser();
+	String getZipCode();
 }
 
