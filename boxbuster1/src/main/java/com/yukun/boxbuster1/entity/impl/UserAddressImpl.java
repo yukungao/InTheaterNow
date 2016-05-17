@@ -9,7 +9,7 @@ public class UserAddressImpl implements Address{
 	private String street;
 	private String city;
 	private String state;
-	private String zipCode;
+	private int zipCode;
 	
 	private User user;
 	
@@ -34,7 +34,7 @@ public class UserAddressImpl implements Address{
 	}
 	
 	@Override
-	public String getZipCode() {
+	public int getZipCode() {
 		return zipCode;
 	}
 	
@@ -66,7 +66,7 @@ public class UserAddressImpl implements Address{
 		this.state = state;
 	}
 
-	public void setZipCode(String zipCode) {
+	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
 

@@ -12,8 +12,7 @@ public class TicketImpl implements Ticket {
 	private float price;
 	private Movie movie;
 	private Theater theater;
-	private Date movieStartTime;
-	private Date movieEndTime;
+	private Date movieTime;
 	private UUID qrCode;
 	
 	@Override
@@ -47,18 +46,11 @@ public class TicketImpl implements Ticket {
 		this.theater = theater;
 	}
 	@Override
-	public Date getMovieStartTime() {
-		return movieStartTime;
+	public Date getMovieTime() {
+		return movieTime;
 	}
-	public void setMovieStartTime(Date movieStartTime) {
-		this.movieStartTime = movieStartTime;
-	}
-	@Override
-	public Date getMovieEndTime() {
-		return movieEndTime;
-	}
-	public void setMovieEndTime(Date movieEndTime) {
-		this.movieEndTime = movieEndTime;
+	public void setMovieTime(Date movieTime) {
+		this.movieTime = movieTime;
 	}
 	
 	@Override
@@ -66,8 +58,8 @@ public class TicketImpl implements Ticket {
 		return qrCode;
 	}
 
-	public void setQRCode(UUID qrCode2) {
-		this.qrCode = qrCode2;
+	public void setQRCode(UUID qrCode) {
+		this.qrCode = qrCode;
 	}
 	
 }

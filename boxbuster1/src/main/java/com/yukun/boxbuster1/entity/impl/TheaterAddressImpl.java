@@ -10,7 +10,7 @@ public class TheaterAddressImpl implements Address {
 	private String street;
 	private String city;
 	private String state;
-	private String zipCode;
+	private int zipCode;
 	
 	private Theater theater;
 	
@@ -35,7 +35,7 @@ public class TheaterAddressImpl implements Address {
 	}
 	
 	@Override
-	public String getZipCode() {
+	public int getZipCode() {
 		return zipCode;
 	}
 	
@@ -67,7 +67,7 @@ public class TheaterAddressImpl implements Address {
 		this.state = state;
 	}
 
-	public void setZipCode(String zipCode) {
+	public void setZipCode(int zipCode) {
 		this.zipCode = zipCode;
 	}
 

@@ -12,9 +12,7 @@ public interface Ticket {
 	
 	Theater getTheater();
 	
-	Date getMovieStartTime();
-	
-	Date getMovieEndTime();
+	Date getMovieTime();
 	
 	UUID getQRCode();
 

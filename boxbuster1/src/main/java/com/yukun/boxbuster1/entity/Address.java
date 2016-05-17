@@ -7,6 +7,6 @@ public interface Address {
 	String getStreet();
 	String getCity();
 	String getState();
-	String getZipCode();
+	int getZipCode();
 }
 
