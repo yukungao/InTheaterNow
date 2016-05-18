@@ -1,10 +1,16 @@
 package com.yukun.boxbuster1.entity.impl;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
 import com.yukun.boxbuster1.entity.Address;
 import com.yukun.boxbuster1.entity.Theater;
 
-public class TheaterAddressImpl implements Address {
 
+public class TheaterAddressImpl implements Address {
 	private long id;
 	private String number;
 	private String street;

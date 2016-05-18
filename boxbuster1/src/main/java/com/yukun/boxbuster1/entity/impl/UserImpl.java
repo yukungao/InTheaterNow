@@ -3,27 +3,47 @@ package com.yukun.boxbuster1.entity.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import com.yukun.boxbuster1.entity.Address;
 import com.yukun.boxbuster1.entity.User;
 import com.yukun.boxbuster1.entity.UserPurchasesHistory;
 
+@Entity
+@Table(name = "user")
 public class UserImpl implements User{
+	@Id
+	@Column(name = "iduser")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
+	@Column(name = "first_name")
 	private String firstname;
 	
+	@Column(name = "last_name")
 	private String lastname;
 	
+	@Column(name = "user_address")
 	private Address address;
 	
+	@Column(name = "pin")
 	private String pin;
 	
+	@Column(name = "creditcardnumber")
 	private long creditcardnumber;
 	
 	
-
+	@Column(name = "balance")
 	private float balance;
 	
+	@OneToMany(mappedBy = "user", targetEntity = UserPurchasesHistoryImpl.class, cascade = CascadeType.ALL)
 	private List<UserPurchasesHistory> userPurchasesHistory;
 	
 	public UserImpl(){}
