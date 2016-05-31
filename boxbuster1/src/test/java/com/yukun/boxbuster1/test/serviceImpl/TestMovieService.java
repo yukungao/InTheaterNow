@@ -1,5 +1,7 @@
 package com.yukun.boxbuster1.test.serviceImpl;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -28,13 +30,24 @@ public class TestMovieService extends AbstractJUnit4SpringContextTests {
 		long added_id = movieService.addMovie(newMovie);
 		logger.info("movie added " + added_id);
 		Movie added = movieService.getMovieById(added_id);
+		
 
 	}
 	
 	@Test
 	public void getAllMovie() {
-		
+		List<Movie> allMovie = movieService.getAllMovies();
+		for(Movie element : allMovie) {
+			System.out.println(element.toString());
+		}
 		
 	}
+	
+	@Test
+	public void getMovieByTitle() {
+		Movie movie = movieService.getMovieByTitle("CaptainAmerica");
+		System.out.println(movie.getTitle());
+	}
+	
 }
 

@@ -58,6 +58,11 @@ public class MovieImpl implements Movie {
 		this.iMDBRating = iMDBRating;
 	}
 	
+	@Override
+	public String toString() {
+		return "MovieImpl [id=" + id + ", title=" + title + ", genre=" + genre + ", iMDBRating=" + iMDBRating + "]";
+	}
+	
 	/*
 	@Override
 	public List<String> getMovieCasts() {

@@ -49,7 +49,6 @@ public class MovieRepositoryImpl implements MovieRepository {
 	@Override
 	public void update(Movie movie) {
 		this.sessionFactory.getCurrentSession().update(movie);
-		
 	}
 
 	@Override
