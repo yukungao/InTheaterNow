@@ -1,6 +1,6 @@
 package com.yukun.boxbuster1.service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 import com.yukun.boxbuster1.entity.Movie;

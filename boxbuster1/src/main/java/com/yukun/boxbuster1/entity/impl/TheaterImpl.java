@@ -2,9 +2,12 @@ package com.yukun.boxbuster1.entity.impl;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.yukun.boxbuster1.entity.Address;
@@ -17,11 +20,14 @@ public class TheaterImpl implements Theater {
 	@Column(name = "idtheater")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
 	@Column(name = "name")
 	private String name;
-	@Column(name = "theater_address")
+	/*
+	@OneToOne(fetch = FetchType.LAZY, targetEntity = TheaterAddressImpl.class)
+	@JoinColumn(name = "theater_address_idtheater_address")
 	private Address address;
-	
+	*/
 	
 	@Override
 	public long getId() {
@@ -37,6 +43,7 @@ public class TheaterImpl implements Theater {
 	public void setName(String name) {
 		this.name = name;
 	}
+	/*
 	@Override
 	public Address getAddress() {
 		return address;
@@ -44,6 +51,7 @@ public class TheaterImpl implements Theater {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	*/
 	
 	
 	

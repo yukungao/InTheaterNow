@@ -51,4 +51,9 @@ public class MovieRepositoryImpl implements MovieRepository {
 		this.sessionFactory.getCurrentSession().update(movie);
 		
 	}
+
+	@Override
+	public Movie getMovieById(long id) {
+		return (Movie) this.sessionFactory.getCurrentSession().get(MovieImpl.class, id);
+	}
 }

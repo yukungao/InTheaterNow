@@ -2,6 +2,8 @@ package com.yukun.boxbuster1.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,9 @@ import com.yukun.boxbuster1.service.BrowseService;
 import com.yukun.boxbuster1.service.MovieService;
 import com.yukun.boxbuster1.service.TheaterService;
 import com.yukun.boxbuster1.service.TicketService;
-import com.yukun.boxbuster1.service.UserService;
 
 @Service
+@Transactional
 public class BrowseServiceImpl implements BrowseService {
 	@Autowired
 	private TicketService ticketService;
@@ -24,9 +26,6 @@ public class BrowseServiceImpl implements BrowseService {
 	
 	@Autowired
 	private TheaterService theaterService;
-	
-	@Autowired
-	private UserService userService;
 	
 	
 	@Override

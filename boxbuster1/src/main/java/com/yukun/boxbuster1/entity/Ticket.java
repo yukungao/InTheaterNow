@@ -6,7 +6,7 @@ public interface Ticket {
 	
 	long getId();
 	
-	float getPrice();
+	double getPrice();
 	
 	Movie getMovie();
 	

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import com.yukun.boxbuster1.entity.User;
+import com.yukun.boxbuster1.entity.impl.UserImpl;
 import com.yukun.boxbuster1.repository.UserRepository;
 
 @Repository
@@ -24,8 +25,7 @@ public class UserRepositoryImpl implements UserRepository{
 
 	@Override
 	public User getUser(long userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return (User) this.sessionFactory.getCurrentSession().get(UserImpl.class, userId);
 	}
 
 	@SuppressWarnings("unchecked")

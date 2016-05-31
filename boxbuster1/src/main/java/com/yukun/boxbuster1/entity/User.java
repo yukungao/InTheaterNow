@@ -14,13 +14,13 @@ public interface User {
 	//The User basic info
 	String getFirstName();
 	String getLastName();
-	Address getAddress();
+	String getAddress();
 	
 	//The User purchase info
-	long getCreditCardNumber();
-	float getBalance();
+	//long getCreditCardNumber();
+	double getBalance();
 	
 	List<UserPurchasesHistory> getUserPurchasesHistory();
 	void addUserPurchasesHistory(UserPurchasesHistory userPurchasesHistory);
-	void costBalance(float price);
+	void costBalance(double price);
 }

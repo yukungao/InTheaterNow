@@ -13,7 +13,9 @@ public interface MovieRepository {
 
 	Movie getMovieByGenre(String genre);
 
+	Movie getMovieById(long id);
+	
 	List<Movie> getAllMovies();
-
+	
 	void update(Movie movie);
 }

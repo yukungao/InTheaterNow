@@ -6,11 +6,12 @@ public interface Movie {
 	// Id as the primary key
 	long getId();
 	
+	
 	// Basic info to support retrieve by
 	// Title, Genre, MovieCast
 	String getTitle();
 	String getGenre();
-	List<String> getMovieCasts();
+	//List<String> getMovieCasts();
 	
 	//For filtering by Rating
 	float getIMDBRating();

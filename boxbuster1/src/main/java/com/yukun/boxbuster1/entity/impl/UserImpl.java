@@ -24,29 +24,29 @@ public class UserImpl implements User{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(name = "first_name")
+	@Column(name = "firstname")
 	private String firstname;
 	
-	@Column(name = "last_name")
+	@Column(name = "lastname")
 	private String lastname;
 	
 	@Column(name = "user_address")
-	private Address address;
+	private String address;
 	
 	@Column(name = "pin")
 	private String pin;
 	
-	@Column(name = "creditcardnumber")
-	private long creditcardnumber;
+	//@Column(name = "creditcardnumber")
+	//private long creditcardnumber;
 	
 	
 	@Column(name = "balance")
-	private float balance;
+	private double balance;
 	
 	@OneToMany(mappedBy = "user", targetEntity = UserPurchasesHistoryImpl.class, cascade = CascadeType.ALL)
 	private List<UserPurchasesHistory> userPurchasesHistory;
 	
-	public UserImpl(){}
+	public UserImpl(){};
 
 	@Override
 	public long getId() {
@@ -76,12 +76,12 @@ public class UserImpl implements User{
 	}
 
 	@Override
-	public Address getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddress(String string) {
+		this.address = string;
 	}
 
 	@Override
@@ -93,28 +93,29 @@ public class UserImpl implements User{
 		this.pin = pin;
 	}
 
+	/*
 	@Override
 	public long getCreditCardNumber() {
-		// TODO Auto-generated method stub
 		return creditcardnumber;
 	}
 	
 	public void setCreditcardnumber(long creditcardnumber) {
 		this.creditcardnumber = creditcardnumber;
 	}
+	*/
 	
 	@Override
-	public float getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 
 	
-	public void setBalance(float balance) {
-		this.balance = balance;
+	public void setBalance(double d) {
+		this.balance = d;
 	}
 	
 	@Override
-	public void costBalance(float price) {
+	public void costBalance(double price) {
 		this.balance = balance - price;
 	}
 	

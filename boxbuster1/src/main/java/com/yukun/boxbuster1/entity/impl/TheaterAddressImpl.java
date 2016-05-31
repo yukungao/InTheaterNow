@@ -4,14 +4,22 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.yukun.boxbuster1.entity.Address;
 import com.yukun.boxbuster1.entity.Theater;
 
+//@Entity
+//@Table(name = "theater_address")
 
 public class TheaterAddressImpl implements Address {
+	//@Id
+	//@Column(name = "idtheater_address")
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	
+	
 	private String number;
 	private String street;
 	private String city;

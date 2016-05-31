@@ -1,6 +1,6 @@
 package com.yukun.boxbuster1.service.impl;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,12 +21,13 @@ public class TicketServiceImpl implements TicketService{
 	@Autowired
 	private TicketRepository ticketRepository;
 	
+	/*
 	@Autowired
 	private MovieService movieService;
 	
 	@Autowired
 	private TheaterService theaterService;
-	
+	*/
 	
 	@Override
 	public float createTicket(TicketImpl ticket) {

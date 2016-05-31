@@ -40,7 +40,7 @@ public class TicketImpl implements Ticket {
 	private UUID qrCode;
 	
 	@Override
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
 	
