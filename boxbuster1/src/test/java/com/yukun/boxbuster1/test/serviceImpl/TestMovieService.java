@@ -30,5 +30,11 @@ public class TestMovieService extends AbstractJUnit4SpringContextTests {
 		Movie added = movieService.getMovieById(added_id);
 
 	}
+	
+	@Test
+	public void getAllMovie() {
+		
+		
+	}
 }
 
