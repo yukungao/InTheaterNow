@@ -1,6 +1,8 @@
 package com.yukun.boxbuster1.entity;
 
 import java.util.List;
+import com.yukun.boxbuster1.utils.Genres;
+import com.yukun.boxbuster1.utils.Ratings;
 
 public interface Movie {
 	// Id as the primary key
@@ -10,10 +12,10 @@ public interface Movie {
 	// Basic info to support retrieve by
 	// Title, Genre, MovieCast
 	String getTitle();
-	String getGenre();
-	//List<String> getMovieCasts();
+	Genres getGenre();
+	Ratings getRating();
 	
 	//For filtering by Rating
-	float getIMDBRating();
+	double getIMDBRating();
 
 }

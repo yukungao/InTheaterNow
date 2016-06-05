@@ -39,6 +39,9 @@ public class TicketImpl implements Ticket {
 	@Column(name = "qrcode")
 	private UUID qrCode;
 	
+	@Column(name = "status")
+	private boolean status;
+	
 	@Override
 	public double getPrice() {
 		return price;
@@ -84,6 +87,15 @@ public class TicketImpl implements Ticket {
 
 	public void setQRCode(UUID qrCode) {
 		this.qrCode = qrCode;
+	}
+
+	@Override
+	public Boolean getStatus() {
+		return status;
+	}
+	
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	
 }

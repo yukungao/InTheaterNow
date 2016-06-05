@@ -3,15 +3,19 @@ package com.yukun.boxbuster1.repository;
 import java.util.List;
 
 import com.yukun.boxbuster1.entity.Movie;
+import com.yukun.boxbuster1.utils.Genres;
+import com.yukun.boxbuster1.utils.Ratings;
 
 public interface MovieRepository {
 	long addMovie(Movie movie);
 
-	Movie getMovieByTitle(String name);
+	List<Movie> getMovieByTitle(String name);
 
-	Movie getMovieByRate(float iMDBRating);
+	List<Movie> getMovieByImdbRate(double iMDBRating);
 
-	Movie getMovieByGenre(String genre);
+	List<Movie> getMovieByRating(Ratings rating);
+	
+	List<Movie> getMovieByGenre(Genres genre);
 
 	Movie getMovieById(long id);
 	

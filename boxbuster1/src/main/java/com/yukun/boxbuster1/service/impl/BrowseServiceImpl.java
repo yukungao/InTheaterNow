@@ -14,6 +14,7 @@ import com.yukun.boxbuster1.service.BrowseService;
 import com.yukun.boxbuster1.service.MovieService;
 import com.yukun.boxbuster1.service.TheaterService;
 import com.yukun.boxbuster1.service.TicketService;
+import com.yukun.boxbuster1.utils.Genres;
 
 @Service
 @Transactional
@@ -55,17 +56,17 @@ public class BrowseServiceImpl implements BrowseService {
 	}
 
 	@Override
-	public Movie getMovieByTitle(String title) {
+	public List<Movie> getMovieByTitle(String title) {
 		return movieService.getMovieByTitle(title);
 	}
 
 	@Override
-	public Movie getMovieByImdbRate(float rate) {
+	public List<Movie> getMovieByImdbRate(double rate) {
 		return movieService.getMovieByImdbRate(rate);
 	}
 
 	@Override
-	public Movie getMovieByGenre(String genre) {
+	public List<Movie> getMovieByGenre(Genres genre) {
 		return movieService.getMovieByGenre(genre);
 	}
 

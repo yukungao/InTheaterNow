@@ -14,7 +14,7 @@ public interface User {
 	//The User basic info
 	String getFirstName();
 	String getLastName();
-	String getAddress();
+	Address getAddress();
 	
 	//The User purchase info
 	//long getCreditCardNumber();

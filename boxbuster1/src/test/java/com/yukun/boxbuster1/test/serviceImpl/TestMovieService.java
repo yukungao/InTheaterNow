@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import com.yukun.boxbuster1.entity.Movie;
 import com.yukun.boxbuster1.entity.impl.MovieImpl;
 import com.yukun.boxbuster1.service.MovieService;
+import com.yukun.boxbuster1.utils.Genres;
 
 @ContextConfiguration(locations = { "classpath:spring-context.xml" })
 public class TestMovieService extends AbstractJUnit4SpringContextTests {
@@ -25,13 +26,12 @@ public class TestMovieService extends AbstractJUnit4SpringContextTests {
 	public void addAndGetMovie() {
 		MovieImpl newMovie = new MovieImpl();
 		newMovie.setTitle("CaptainAmerica");
-		newMovie.setGenre("ACTION");
+		newMovie.setGenre(Genres.ACTION);
 
 		long added_id = movieService.addMovie(newMovie);
 		logger.info("movie added " + added_id);
 		Movie added = movieService.getMovieById(added_id);
 		
-
 	}
 	
 	@Test
@@ -45,9 +45,22 @@ public class TestMovieService extends AbstractJUnit4SpringContextTests {
 	
 	@Test
 	public void getMovieByTitle() {
-		Movie movie = movieService.getMovieByTitle("CaptainAmerica");
-		System.out.println(movie.getTitle());
+		List<Movie> movies = movieService.getMovieByTitle("CaptainAmerica");
+		for(Movie element : movies) {
+			System.out.println(element.toString());
+		}
+		//System.out.println(movie.getTitle());
+	}	
+	
+	@Test
+	public void getMovieByGenre() {
+		List<Movie> movies = movieService.getMovieByGenre(Genres.ACTION);
+		for(Movie element : movies) {
+			System.out.println(element.toString());
+		}
+		//System.out.println(movie.getTitle());
 	}
+	
 	
 }
 

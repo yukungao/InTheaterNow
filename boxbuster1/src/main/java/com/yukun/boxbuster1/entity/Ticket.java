@@ -16,4 +16,7 @@ public interface Ticket {
 	
 	UUID getQRCode();
 
+	//This status is to see if the ticket 
+	// is sold out or not
+	Boolean getStatus();
 }

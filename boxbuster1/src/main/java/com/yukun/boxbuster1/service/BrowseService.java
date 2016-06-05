@@ -5,6 +5,7 @@ import java.util.List;
 import com.yukun.boxbuster1.entity.Address;
 import com.yukun.boxbuster1.entity.Movie;
 import com.yukun.boxbuster1.entity.Theater;
+import com.yukun.boxbuster1.utils.Genres;
 
 public interface BrowseService {
 	List<Movie> browseAllMovies();
@@ -15,12 +16,12 @@ public interface BrowseService {
 
 	List<Theater> getAllTheatersOfMovie(Movie movie);
 
-	Movie getMovieByTitle(String title);
+	List<Movie> getMovieByTitle(String title);
 	
 	//Filtering the movie by IMDB rating
-	Movie getMovieByImdbRate(float rate);
+	List<Movie> getMovieByImdbRate(double rate);
 
-	Movie getMovieByGenre(String genre);
+	List<Movie> getMovieByGenre(Genres genre);
 	
 	Theater getTheaterByName(String name);
 

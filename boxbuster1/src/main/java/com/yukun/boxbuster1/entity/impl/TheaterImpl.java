@@ -23,11 +23,16 @@ public class TheaterImpl implements Theater {
 	
 	@Column(name = "name")
 	private String name;
-	/*
+	
+	@Column(name = "seats")
+	private static int seats; 
+	
+	
+	/*Theater maintain this relationship*/
 	@OneToOne(fetch = FetchType.LAZY, targetEntity = TheaterAddressImpl.class)
 	@JoinColumn(name = "theater_address_idtheater_address")
 	private Address address;
-	*/
+	
 	
 	@Override
 	public long getId() {
@@ -43,7 +48,7 @@ public class TheaterImpl implements Theater {
 	public void setName(String name) {
 		this.name = name;
 	}
-	/*
+	
 	@Override
 	public Address getAddress() {
 		return address;
@@ -51,8 +56,15 @@ public class TheaterImpl implements Theater {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	*/
 	
+	@Override
+	public int getSeats() {
+		return seats;
+	}
+	
+	public void setSeats(int seats) {
+		 this.seats = seats;
+	}
 	
 	
 }
