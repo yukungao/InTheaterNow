@@ -8,13 +8,25 @@ import com.yukun.boxbuster1.entity.Theater;
 import com.yukun.boxbuster1.entity.Ticket;
 
 public interface TicketRepository {
-	long createTicket(Ticket ticket);
+	long addTicket(Ticket ticket);
 	
-	Ticket getTicketByMovie(Movie movie);
+	List<Ticket> getTicketByMovie(Movie movie);
 	
-	Ticket getTicketByTheater(Theater theater);
+	//This one is for future restful usage
+	List<Ticket> getTicketByMovieTitle(String movieTitle);
 	
-	Ticket getTicketByMovieTime(Date time);
+	List<Ticket> getTicketByTheater(Theater theater);
+	
+	//This one is for future restful usage
+	List<Ticket> getTicketByTheaterName(String theaterName);
+	
+	//Don't know how to use this feature
+	List<Ticket> getTicketByMovieTime(String time);
+	
+	//Get the exact tickets
+	List<Ticket> searchExactTicket(String movieName, String theaterName, String time);
+	
+	Ticket getTicketById(long id);
 	
 	void update(Ticket ticket);
 	

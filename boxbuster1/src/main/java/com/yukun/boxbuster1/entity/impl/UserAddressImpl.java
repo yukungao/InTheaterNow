@@ -1,16 +1,47 @@
 package com.yukun.boxbuster1.entity.impl;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
 import com.yukun.boxbuster1.entity.Address;
 import com.yukun.boxbuster1.entity.User;
 
+@Entity
+@Table(name = "user_address")
+
 public class UserAddressImpl implements Address{
-	private long id;
-	private String number;
-	private String street;
-	private String city;
-	private String state;
-	private int zipCode;
 	
+	@Id
+	@Column(name = "iduser_address")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(name = "number")
+	private String number;
+	
+	@Column(name = "street")
+	private String street;
+	
+	@Column(name = "city")
+	private String city;
+	
+	@Column(name = "state")
+	private String state;
+	
+	@Column(name = "zipCode")
+	private String zipCode;
+	
+	
+	@OneToOne(fetch = FetchType.LAZY, targetEntity=UserImpl.class)
+	@JoinColumn(name="users_idusers")
 	private User user;
 	
 	@Override
@@ -34,7 +65,7 @@ public class UserAddressImpl implements Address{
 	}
 	
 	@Override
-	public int getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 	
@@ -66,7 +97,7 @@ public class UserAddressImpl implements Address{
 		this.state = state;
 	}
 
-	public void setZipCode(int zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 

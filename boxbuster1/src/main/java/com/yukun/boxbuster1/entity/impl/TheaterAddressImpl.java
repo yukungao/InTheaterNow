@@ -2,30 +2,44 @@ package com.yukun.boxbuster1.entity.impl;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.yukun.boxbuster1.entity.Address;
 import com.yukun.boxbuster1.entity.Theater;
 
-//@Entity
-//@Table(name = "theater_address")
+@Entity
+@Table(name = "theater_address")
 
 public class TheaterAddressImpl implements Address {
-	//@Id
-	//@Column(name = "idtheater_address")
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@Column(name = "idtheater_address")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	
+	@Column(name = "number")
 	private String number;
-	private String street;
-	private String city;
-	private String state;
-	private int zipCode;
 	
+	@Column(name = "street")
+	private String street;
+	
+	@Column(name = "city")
+	private String city;
+	
+	@Column(name = "state")
+	private String state;
+	
+	@Column(name = "zipCode")
+	private String zipCode;
+	
+	
+	@OneToOne(fetch = FetchType.LAZY, targetEntity=TheaterImpl.class)
+	@JoinColumn(name="theater_idtheater")	
 	private Theater theater;
 	
 	@Override
@@ -49,7 +63,7 @@ public class TheaterAddressImpl implements Address {
 	}
 	
 	@Override
-	public int getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 	
@@ -81,7 +95,7 @@ public class TheaterAddressImpl implements Address {
 		this.state = state;
 	}
 
-	public void setZipCode(int zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 

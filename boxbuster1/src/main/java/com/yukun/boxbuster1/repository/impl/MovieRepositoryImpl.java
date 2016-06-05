@@ -32,9 +32,6 @@ public class MovieRepositoryImpl implements MovieRepository {
 		List<Movie> searchResult = crit.list();
 		return searchResult;
 	}
-
-	
-	
 	
 	@Override
 	public List<Movie> getMovieByRating(Ratings rating) {
@@ -72,6 +69,7 @@ public class MovieRepositoryImpl implements MovieRepository {
 
 	@Override
 	public List<Movie> getMovieByImdbRate(double iMDBRating) {
+		// To do list, need to change it to larger than or less than
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(MovieImpl.class)
 				.add(Restrictions.eq("iMDBRating", iMDBRating));
 		List<Movie> searchResult = crit.list();

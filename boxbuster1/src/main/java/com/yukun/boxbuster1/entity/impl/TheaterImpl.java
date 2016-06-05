@@ -63,7 +63,7 @@ public class TheaterImpl implements Theater {
 	}
 	
 	public void setSeats(int seats) {
-		 this.seats = seats;
+		 TheaterImpl.seats = seats;
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.yukun.boxbuster1.entity.impl;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,6 +32,9 @@ public class UserPurchasesHistoryImpl implements UserPurchasesHistory {
 	@JoinColumn(name = "ticket_idticket")
 	private Ticket ticket;
 	
+	@Column(name="operation_datetime")
+	private String operationDateTime;
+	
 	@Override
 	public long getId() {
 		return id;
@@ -55,6 +60,14 @@ public class UserPurchasesHistoryImpl implements UserPurchasesHistory {
 	public UserPurchasesHistoryImpl(Ticket ticket) {
 
 		this.ticket = ticket;
+	}
+	@Override
+	public String getOperationDate() {
+		return operationDateTime;
+	}
+	
+	public void setOperationDate(String time) {
+		this.operationDateTime = time;
 	}
 	
 }

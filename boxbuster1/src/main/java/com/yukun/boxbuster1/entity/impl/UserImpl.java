@@ -6,10 +6,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.yukun.boxbuster1.entity.Address;
@@ -30,15 +33,11 @@ public class UserImpl implements User{
 	@Column(name = "lastname")
 	private String lastname;
 	
-	@Column(name = "user_address")
-	private String address;
+	@OneToOne(targetEntity=UserAddressImpl.class, optional=true, cascade=CascadeType.ALL, mappedBy="user")
+	private Address address;
 	
 	@Column(name = "pin")
 	private String pin;
-	
-	//@Column(name = "creditcardnumber")
-	//private long creditcardnumber;
-	
 	
 	@Column(name = "balance")
 	private double balance;
@@ -76,12 +75,12 @@ public class UserImpl implements User{
 	}
 
 	@Override
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String string) {
-		this.address = string;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override
@@ -92,17 +91,6 @@ public class UserImpl implements User{
 	public void setPin(String pin) {
 		this.pin = pin;
 	}
-
-	/*
-	@Override
-	public long getCreditCardNumber() {
-		return creditcardnumber;
-	}
-	
-	public void setCreditcardnumber(long creditcardnumber) {
-		this.creditcardnumber = creditcardnumber;
-	}
-	*/
 	
 	@Override
 	public double getBalance() {

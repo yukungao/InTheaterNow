@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,10 +23,14 @@ public class TheaterRepositoryImpl implements TheaterRepository{
 	public long addTheater(Theater theater) {
 		return (long) this.sessionFactory.getCurrentSession().save(theater);
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
-	public Theater getTheaterByName(String name) {
-		return (Theater) this.sessionFactory.getCurrentSession().get(TheaterImpl.class, name);
+	public List<Theater> getTheaterByName(String name) {
+		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(TheaterImpl.class)
+				.add(Restrictions.eq("theaterAddress.zip", name));
+		List<Theater> searchResult = crit.list();
+		return searchResult;
 	}
 
 	@Override
@@ -46,4 +51,13 @@ public class TheaterRepositoryImpl implements TheaterRepository{
 		this.sessionFactory.getCurrentSession().update(theater);
 	}
 
+	
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Theater> getTheaterByZip(String zip) {
+		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(TheaterImpl.class)
+				.add(Restrictions.eqOrIsNull("theaterAddress.zip", zip));
+		List<Theater> searchResult = crit.list();
+		return searchResult;
+	}
 }
