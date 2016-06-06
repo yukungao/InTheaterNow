@@ -38,7 +38,7 @@ public class TheaterAddressImpl implements Address {
 	private String zipCode;
 	
 	
-	@OneToOne(fetch = FetchType.LAZY, targetEntity=TheaterImpl.class)
+	@OneToOne(targetEntity=TheaterImpl.class)
 	@JoinColumn(name="theater_idtheater")	
 	private Theater theater;
 	

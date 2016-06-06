@@ -47,7 +47,8 @@ public class TestTheaterService extends AbstractJUnit4SpringContextTests {
 		
 		//Step 3: Set theater's address and update it.
 		theater.setAddress(address1);
-		System.out.println(theater.getAddress().toString());
+		((TheaterAddressImpl) address1).setTheater(theater);
+	
 		theaterService.update(theater);
 		
 		/*
