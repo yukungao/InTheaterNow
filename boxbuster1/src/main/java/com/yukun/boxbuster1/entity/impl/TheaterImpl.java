@@ -1,5 +1,6 @@
 package com.yukun.boxbuster1.entity.impl;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,12 +26,11 @@ public class TheaterImpl implements Theater {
 	private String name;
 	
 	@Column(name = "seats")
-	private static int seats; 
+	private int seats; 
 	
 	
 	/*Theater maintain this relationship*/
-	@OneToOne(fetch = FetchType.LAZY, targetEntity = TheaterAddressImpl.class)
-	@JoinColumn(name = "theater_address_idtheater_address")
+	@OneToOne(targetEntity=TheaterAddressImpl.class, optional=true, cascade=CascadeType.ALL, mappedBy="theater")
 	private Address address;
 	
 	
@@ -63,7 +63,11 @@ public class TheaterImpl implements Theater {
 	}
 	
 	public void setSeats(int seats) {
-		 TheaterImpl.seats = seats;
+		 this.seats = seats;
+	}
+	@Override
+	public String toString() {
+		return "TheaterImpl [id=" + id + ", name=" + name + ", seats=" + seats + ", address=" + address + "]";
 	}
 	
 	

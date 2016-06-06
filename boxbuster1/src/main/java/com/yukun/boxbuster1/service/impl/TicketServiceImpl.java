@@ -117,5 +117,26 @@ public class TicketServiceImpl implements TicketService{
 	public List<Ticket> searchAvailabeTicket(String movieName, String theaterName) {
 		return ticketRepository.getAvailableTicket(movieName, theaterName);
 	}
+
+	@Override
+	public List<Ticket> createTickets(Movie movie, Theater theater, double price) {
+		int numberofSeats = theater.getSeats();
+		List<Ticket> tickets = new ArrayList<Ticket>();
+		
+		//Create the tickets based on the capacity of theater
+		while(numberofSeats > 0) {
+			
+			Ticket currTicket = new TicketImpl();
+			((TicketImpl) currTicket).setMovie(movie);
+			((TicketImpl) currTicket).setTheater(theater);
+			((TicketImpl) currTicket).setPrice(price);
+			generateQRCode(currTicket);
+			ticketRepository.addTicket(currTicket);
+			tickets.add(currTicket);
+			numberofSeats--;
+		}
+		
+		return tickets;
+	}
 	
 }

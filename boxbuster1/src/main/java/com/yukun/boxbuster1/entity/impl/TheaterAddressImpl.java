@@ -102,5 +102,12 @@ public class TheaterAddressImpl implements Address {
 	public void setTheater(Theater theater) {
 		this.theater = theater;
 	}
+
+	
+	@Override
+	public String toString() {
+		return "TheaterAddressImpl [id=" + id + ", number=" + number + ", street=" + street + ", city=" + city
+				+ ", state=" + state + ", zipCode=" + zipCode + ", theater=" + theater + "]";
+	}
 	
 }

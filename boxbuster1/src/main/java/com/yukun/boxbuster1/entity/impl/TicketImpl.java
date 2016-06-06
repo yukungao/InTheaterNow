@@ -27,7 +27,9 @@ public class TicketImpl implements Ticket {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private float price;
+	@Column(name = "price")
+	private double price;
+	
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity=MovieImpl.class)
 	@JoinColumn(name="movie_idmovie")
 	private Movie movie;
@@ -53,7 +55,7 @@ public class TicketImpl implements Ticket {
 		return price;
 	}
 	
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 	

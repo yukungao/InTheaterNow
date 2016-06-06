@@ -7,6 +7,8 @@ import com.yukun.boxbuster1.entity.Theater;
 import com.yukun.boxbuster1.entity.Ticket;
 
 public interface TicketService {
+	
+	
 	long addTicket(Ticket ticket);
 	
 	List<Ticket> getTicketByMovie(Movie movie);
@@ -31,6 +33,10 @@ public interface TicketService {
 	// These two feature allow you to do the search with restful
 	List<Movie> searchMoviesByTheaterName(String theaterName);
 	List<Theater> searchTheatersByMovieName(String movieName);
+	
+	// This method is to create ticket based on movie and theater
+	public List<Ticket> createTickets(Movie movie, Theater theater, double price);
+	
 	
 	Ticket getTicketById(long id);
 	
