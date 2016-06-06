@@ -60,7 +60,7 @@ public class MovieServiceImpl implements MovieService{
 	@Override
 	public List<Movie> getMovieByRate(Ratings rating) {
 		// TODO Auto-generated method stub
-		return null;
+		return movieRepository.getMovieByRating(rating);
 	}
 
 }

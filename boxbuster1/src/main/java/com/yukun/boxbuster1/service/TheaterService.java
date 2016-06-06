@@ -8,11 +8,15 @@ import com.yukun.boxbuster1.entity.Theater;
 public interface TheaterService {
 	long addTheater(Theater theater);
 
-	Theater getTheaterByName(String name);
+	Theater getTheaterById(long id);
+	
+	List<Theater> getTheaterByName(String name);
 
 	Theater getTheaterByAddress(Address address);
 
 	List<Theater> getAllTheaters();
-
+	
+	List<Theater> getTheaterByZip(String zip);
+	
 	void update(Theater theater);
 }

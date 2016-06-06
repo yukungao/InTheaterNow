@@ -81,18 +81,19 @@ public class TicketRepositoryImpl implements TicketRepository{
 		return searchResult;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ticket> searchExactTicket(String movieName, String theaterName, String time) {
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(TicketImpl.class);
 		//
 		if (!StringUtils.isEmpty(time)) {
-			crit.add(Restrictions.like("time", "%" + time + "%"));
+			crit.add(Restrictions.like("movieTime", "%" + time + "%"));
 		}
 		if (!StringUtils.isEmpty(theaterName)) {
-			crit.add(Restrictions.eq("theater.theaterName", theaterName));
+			crit.add(Restrictions.eq("theater.name", theaterName));
 		}
 		if (!StringUtils.isEmpty(movieName)) {
-			crit.add(Restrictions.eq("movie.movieName", movieName));
+			crit.add(Restrictions.eq("movie.title", movieName));
 		}
 		List<Ticket> searchResult = crit.list();
 		return searchResult;
@@ -108,6 +109,7 @@ public class TicketRepositoryImpl implements TicketRepository{
 		this.sessionFactory.getCurrentSession().update(ticket);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ticket> getAllTickets() {
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(TicketImpl.class);
@@ -115,5 +117,21 @@ public class TicketRepositoryImpl implements TicketRepository{
 		return searchResult;
 	}
 
-	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Ticket> getAvailableTicket(String movieName, String theaterName) {
+		boolean sold = false;
+		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(TicketImpl.class);
+		
+		if (!StringUtils.isEmpty(movieName)) {
+			crit.add(Restrictions.like("movie.title", "%" + movieName + "%"));
+		}
+		if (!StringUtils.isEmpty(theaterName)) {
+			crit.add(Restrictions.like("theater.name", "%" + theaterName + "%"));
+		}
+		crit.add(Restrictions.eq("status",sold));
+		List<Ticket> searchResult = crit.list();
+		return searchResult;
+	}
+
 }

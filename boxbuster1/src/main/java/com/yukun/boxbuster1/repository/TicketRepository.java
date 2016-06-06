@@ -26,6 +26,9 @@ public interface TicketRepository {
 	//Get the exact tickets
 	List<Ticket> searchExactTicket(String movieName, String theaterName, String time);
 	
+	//Get available tickets
+	List<Ticket> getAvailableTicket(String movieName, String theaterName);
+	
 	Ticket getTicketById(long id);
 	
 	void update(Ticket ticket);

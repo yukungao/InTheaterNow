@@ -8,14 +8,9 @@ import com.yukun.boxbuster1.entity.Theater;
 import com.yukun.boxbuster1.utils.Genres;
 
 public interface BrowseService {
+	
+	
 	List<Movie> browseAllMovies();
-
-	List<Theater> browseAllTheaters();
-
-	List<Movie> getAllMoviesInTheater(Theater theater);
-
-	List<Theater> getAllTheatersOfMovie(Movie movie);
-
 	List<Movie> getMovieByTitle(String title);
 	
 	//Filtering the movie by IMDB rating
@@ -23,7 +18,22 @@ public interface BrowseService {
 
 	List<Movie> getMovieByGenre(Genres genre);
 	
-	Theater getTheaterByName(String name);
+	
 
+	//Get movies in theater
+	List<Movie> getAllMoviesInTheater(Theater theater);
+	List<Movie> getAllMoviesInTheater(String theaterName);
+
+	//Get theater that has such movie
+	List<Theater> getAllTheatersOfMovie(Movie movie);
+	List<Theater> getAllTheatersOfMovie(String movieName);
+	
+	
+	
+	List<Theater> browseAllTheaters();
+	List<Theater> getTheaterByName(String name);
 	Theater getTheaterByAddress(Address address);
+	
+	//List all the theaters with some zip code
+	List<Theater> getTheaterByZip(String zip);
 }

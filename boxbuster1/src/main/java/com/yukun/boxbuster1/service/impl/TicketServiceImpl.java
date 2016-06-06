@@ -1,5 +1,6 @@
 package com.yukun.boxbuster1.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -21,51 +22,100 @@ public class TicketServiceImpl implements TicketService{
 	@Autowired
 	private TicketRepository ticketRepository;
 	
-	/*
-	@Autowired
-	private MovieService movieService;
-	
-	@Autowired
-	private TheaterService theaterService;
-	*/
-	
-	@Override
-	public float createTicket(TicketImpl ticket) {
-		ticketRepository.createTicket(ticket);
-		// Need to generate confirmation info here?
-		generateQRCode(ticket);
-		return ticket.getId();
+	private void generateQRCode(Ticket ticket) {
+		UUID qrCode = UUID.randomUUID();
+		((TicketImpl) ticket).setQRCode(qrCode);
 	}
 
 	@Override
-	public Ticket getTicketByMovie(Movie movie) {
+	public long addTicket(Ticket ticket) {
+		//Need to generate bar-code for this ticket
+		generateQRCode(ticket);
+		return ticketRepository.addTicket(ticket);
+	}
+
+	@Override
+	public List<Ticket> getTicketByMovie(Movie movie) {
 		return ticketRepository.getTicketByMovie(movie);
 	}
 
+
 	@Override
-	public Ticket getTicketByTheater(Theater theater) {
+	public List<Ticket> getTicketByMovieTitle(String movieTitle) {
+		return ticketRepository.getTicketByMovieTitle(movieTitle);
+	}
+
+
+	@Override
+	public List<Ticket> getTicketByTheater(Theater theater) {
 		return ticketRepository.getTicketByTheater(theater);
 	}
 
+
 	@Override
-	public Ticket getTicketByMovieTime(Date time) {
+	public List<Ticket> getTicketByTheaterName(String theaterName) {
+		return ticketRepository.getTicketByTheaterName(theaterName);
+	}
+
+
+
+	@Override
+	public List<Ticket> getTicketByMovieTime(String time) {
 		return ticketRepository.getTicketByMovieTime(time);
 	}
+
+	@Override
+	public List<Ticket> searchExactTicket(String movieName, String theaterName, String time) {
+		return ticketRepository.searchExactTicket(movieName, theaterName, time);
+	}
+
+
+	@Override
+	public Ticket getTicketById(long id) {
+		return ticketRepository.getTicketById(id);
+	}
+
 
 	@Override
 	public void update(Ticket ticket) {
 		ticketRepository.update(ticket);
 	}
 
+
 	@Override
 	public List<Ticket> getAllTickets() {
 		return ticketRepository.getAllTickets();
 	}
 
-	
-	private void generateQRCode(TicketImpl ticket) {
-		UUID qrCode = UUID.randomUUID();
-		ticket.setQRCode(qrCode);
+	@Override
+	public List<Movie> searchMoviesByTheaterName(String theaterName) {
+		List<Movie> movieList = new ArrayList<Movie>();
+
+		List<Ticket> tickets = ticketRepository.getTicketByTheaterName(theaterName);
+		for (Ticket t : tickets) {
+			if (!movieList.contains(t.getMovie())) {
+				movieList.add(t.getMovie());
+			}
+		}
+		return movieList;
+	}
+
+	@Override
+	public List<Theater> searchTheatersByMovieName(String movieName) {
+		List<Theater> theaterList = new ArrayList<Theater>();
+
+		List<Ticket> tickets = ticketRepository.getTicketByMovieTitle(movieName);
+		for (Ticket t : tickets) {
+			if (!theaterList.contains(t.getTheater())) {
+				theaterList.add(t.getTheater());
+			}
+		}
+		return theaterList;
+	}
+
+	@Override
+	public List<Ticket> searchAvailabeTicket(String movieName, String theaterName) {
+		return ticketRepository.getAvailableTicket(movieName, theaterName);
 	}
 	
 }

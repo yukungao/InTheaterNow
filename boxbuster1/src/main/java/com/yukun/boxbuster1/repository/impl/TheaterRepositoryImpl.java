@@ -60,4 +60,9 @@ public class TheaterRepositoryImpl implements TheaterRepository{
 		List<Theater> searchResult = crit.list();
 		return searchResult;
 	}
+
+	@Override
+	public Theater getTheaterById(long id) {
+		return (Theater) this.sessionFactory.getCurrentSession().get(TheaterImpl.class, id);
+	}
 }

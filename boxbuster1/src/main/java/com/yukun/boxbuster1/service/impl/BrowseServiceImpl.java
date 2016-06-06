@@ -41,19 +41,7 @@ public class BrowseServiceImpl implements BrowseService {
 		return theaterService.getAllTheaters();
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Movie> getAllMoviesInTheater(Theater theater) {
-		// TODO Auto-generated method stub
-		return (List<Movie>) ticketService.getTicketByTheater(theater);
-	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Theater> getAllTheatersOfMovie(Movie movie) {
-		// TODO Auto-generated method stub
-		return (List<Theater>) ticketService.getTicketByMovie(movie);
-	}
 
 	@Override
 	public List<Movie> getMovieByTitle(String title) {
@@ -71,7 +59,7 @@ public class BrowseServiceImpl implements BrowseService {
 	}
 
 	@Override
-	public Theater getTheaterByName(String name) {
+	public List<Theater> getTheaterByName(String name) {
 		return theaterService.getTheaterByName(name);
 	}
 
@@ -79,5 +67,38 @@ public class BrowseServiceImpl implements BrowseService {
 	public Theater getTheaterByAddress(Address address) {
 		return theaterService.getTheaterByAddress(address);
 	}
+
+	@Override
+	public List<Theater> getTheaterByZip(String zip) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Theater> getAllTheatersOfMovie(Movie movie) {
+		/// Put the logic at this level instead of TicketService
+		return null;
+	}
+	
+	@Override
+	public List<Theater> getAllTheatersOfMovie(String movieName) {
+		// Put the logic at this level instead of TicketService
+		return ticketService.searchTheatersByMovieName(movieName);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Movie> getAllMoviesInTheater(Theater theater) {
+		// Put the logic at this level instead of TicketService
+		return null;
+	}
+	
+	@Override
+	public List<Movie> getAllMoviesInTheater(String theaterName) {
+		// Put the logic at this level instead of TicketService
+		return ticketService.searchMoviesByTheaterName(theaterName);
+	}
+
 
 }

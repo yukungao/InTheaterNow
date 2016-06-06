@@ -17,20 +17,25 @@ import com.yukun.boxbuster1.service.TheaterService;
 public class TheaterServiceImpl implements TheaterService{
 	@Autowired
 	private TheaterRepository theaterRepository;
-	
+
 	@Override
 	public long addTheater(Theater theater) {
-		return (long) theaterRepository.addTheater(theater);
+		return theaterRepository.addTheater(theater);
 	}
 
 	@Override
-	public Theater getTheaterByName(String name) {
-		return (Theater) theaterRepository.getTheaterByName(name);
+	public Theater getTheaterById(long id) {
+		return theaterRepository.getTheaterById(id);
+	}
+
+	@Override
+	public List<Theater> getTheaterByName(String name) {
+		return theaterRepository.getTheaterByName(name);
 	}
 
 	@Override
 	public Theater getTheaterByAddress(Address address) {
-		return (Theater) theaterRepository.getTreaterByAddress(address);
+		return theaterRepository.getTreaterByAddress(address);
 	}
 
 	@Override
@@ -39,8 +44,14 @@ public class TheaterServiceImpl implements TheaterService{
 	}
 
 	@Override
+	public List<Theater> getTheaterByZip(String zip) {
+		return theaterRepository.getTheaterByZip(zip);
+	}
+
+	@Override
 	public void update(Theater theater) {
 		theaterRepository.update(theater);
+		
 	}
 
 }
