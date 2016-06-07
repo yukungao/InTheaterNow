@@ -2,6 +2,7 @@ package com.yukun.boxbuster1.test.serviceImpl;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -31,10 +32,10 @@ public class TestTheaterService extends AbstractJUnit4SpringContextTests {
 	*/
 	
 	@Test
-	public void addAndGetTheater() {
+	public void testAddAndGetTheater() {
 		//Step 1: Create Address
 		Address address1 = new TheaterAddressImpl(); 
-		((TheaterAddressImpl) address1).setZipCode("95134");
+		((TheaterAddressImpl) address1).setZipCode("95000");
 		
 		//Step 2: Create Theater and Add it to the database
 		TheaterImpl theater = new TheaterImpl(); 
@@ -42,32 +43,47 @@ public class TestTheaterService extends AbstractJUnit4SpringContextTests {
 		theater.setName("amc1");
 		theater.setSeats(10);
 		long added_id = theaterService.addTheater(theater);
+		
+		/**/
 		logger.info("Theater added " + added_id);
 		theater = (TheaterImpl) theaterService.getTheaterById(added_id);
 		
 		//Step 3: Set theater's address and update it.
 		theater.setAddress(address1);
-		((TheaterAddressImpl) address1).setTheater(theater);
-	
+		((TheaterAddressImpl) address1).setTheater(theater);	
 		theaterService.update(theater);
-		
-		/*
-		theater = (TheaterImpl) theaterService.getTheaterById(added_id);
-		
-		System.out.println(theater.getAddress().toString());
-		System.out.println(theater.toString());
-		*/
-		/*
-		//Step 3: Get all the theater in database
+
+		/**/
+
+	}
+	
+	@Test
+	public void testGetAllTheater() {
+		//Get all the theater in database
 		List<Theater> allTheaters = theaterService.getAllTheaters();
 		for(Theater element : allTheaters) {
+			/*
+			System.out.println(element.getId());
+			System.out.println(element.getName());
+			System.out.println(element.getSeats());
+			*/
 			
-			//System.out.println(element.getAddress().toString());
-			System.out.println(element.toString());
-		}
-		*/
-		
+		}	
+		Assert.assertEquals(11 , allTheaters.size());
 	}
+	
+	@Test
+	public void testGetTheaterByZip() {
+		List<Theater> allTheater = theaterService.getTheaterByZip("95134");
+		Assert.assertEquals(1, allTheater.size());
+	}
+	
+	@Test
+	public void testGetTheaterByName() {
+		List<Theater> allTheater = theaterService.getTheaterByName("amc1");
+		Assert.assertEquals(11, allTheater.size());
+	}
+	
 	
 	
 }

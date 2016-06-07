@@ -44,7 +44,7 @@ public class TicketRepositoryImpl implements TicketRepository{
 	public List<Ticket> getTicketByMovieTitle(String movieTitle) {
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(TicketImpl.class);
 		if (!StringUtils.isEmpty(movieTitle)) {
-			crit.add(Restrictions.eq("movie.title", movieTitle));
+			crit.createAlias("movie","mv").add(Restrictions.eq("mv.title", movieTitle));
 		}
 		List<Ticket> searchResult = crit.list();
 		return searchResult;
@@ -66,7 +66,7 @@ public class TicketRepositoryImpl implements TicketRepository{
 	public List<Ticket> getTicketByTheaterName(String theaterName) {
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(TicketImpl.class);
 		if (!StringUtils.isEmpty(theaterName)) {
-			crit.add(Restrictions.eq("theater.name", theaterName));
+			crit.createAlias("theater", "th").add(Restrictions.eq("th.name", theaterName));
 		}
 		List<Ticket> searchResult = crit.list();
 		return searchResult;
@@ -90,10 +90,10 @@ public class TicketRepositoryImpl implements TicketRepository{
 			crit.add(Restrictions.like("movieTime", "%" + time + "%"));
 		}
 		if (!StringUtils.isEmpty(theaterName)) {
-			crit.add(Restrictions.eq("theater.name", theaterName));
+			crit.createAlias("theater", "th").add(Restrictions.eq("th.name", theaterName));
 		}
 		if (!StringUtils.isEmpty(movieName)) {
-			crit.add(Restrictions.eq("movie.title", movieName));
+			crit.createAlias("movie","mv").add(Restrictions.eq("mv.title", movieName));
 		}
 		List<Ticket> searchResult = crit.list();
 		return searchResult;
@@ -124,10 +124,10 @@ public class TicketRepositoryImpl implements TicketRepository{
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(TicketImpl.class);
 		
 		if (!StringUtils.isEmpty(movieName)) {
-			crit.add(Restrictions.like("movie.title", "%" + movieName + "%"));
+			crit.createAlias("movie","mv").add(Restrictions.like("mv.title", "%" + movieName + "%"));
 		}
 		if (!StringUtils.isEmpty(theaterName)) {
-			crit.add(Restrictions.like("theater.name", "%" + theaterName + "%"));
+			crit.createAlias("theater", "th").add(Restrictions.like("th.name", "%" + theaterName + "%"));
 		}
 		crit.add(Restrictions.eq("status",sold));
 		List<Ticket> searchResult = crit.list();

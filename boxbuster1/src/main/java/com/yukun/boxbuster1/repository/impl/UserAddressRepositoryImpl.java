@@ -1,5 +1,6 @@
 package com.yukun.boxbuster1.repository.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import com.yukun.boxbuster1.entity.Address;
+import com.yukun.boxbuster1.entity.User;
 import com.yukun.boxbuster1.entity.impl.UserAddressImpl;
 import com.yukun.boxbuster1.repository.UserAddressRepository;
 
@@ -45,5 +47,19 @@ public class UserAddressRepositoryImpl implements UserAddressRepository{
 	@Override
 	public void update(Address address) {
 		this.sessionFactory.getCurrentSession().update(address);
+	}
+
+	@Override
+	public List<User> getUserbyZip(String zip) {
+		
+		List<Address> searchResult = searchAddressByZip(zip);
+		List<User> userList = new ArrayList<User>();
+		
+		for(Address element : searchResult) {
+			userList.add( ((UserAddressImpl) element).getUser() );
+
+		}
+		// TODO Auto-generated method stub
+		return userList;
 	}
 }

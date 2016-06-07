@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.yukun.boxbuster1.entity.Address;
 import com.yukun.boxbuster1.entity.Theater;
 import com.yukun.boxbuster1.repository.TheaterRepository;
+import com.yukun.boxbuster1.service.AddressService;
 import com.yukun.boxbuster1.service.TheaterService;
 
 @Service
@@ -18,6 +19,9 @@ public class TheaterServiceImpl implements TheaterService{
 	@Autowired
 	private TheaterRepository theaterRepository;
 
+	@Autowired
+	private AddressService addressService;
+	
 	@Override
 	public long addTheater(Theater theater) {
 		return theaterRepository.addTheater(theater);
@@ -45,7 +49,7 @@ public class TheaterServiceImpl implements TheaterService{
 
 	@Override
 	public List<Theater> getTheaterByZip(String zip) {
-		return theaterRepository.getTheaterByZip(zip);
+		return addressService.getTheaterbyZip(zip);
 	}
 
 	@Override

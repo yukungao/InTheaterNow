@@ -28,7 +28,7 @@ public class TheaterRepositoryImpl implements TheaterRepository{
 	@Override
 	public List<Theater> getTheaterByName(String name) {
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(TheaterImpl.class)
-				.add(Restrictions.eq("theaterAddress.zip", name));
+				.add(Restrictions.eq("name", name));
 		List<Theater> searchResult = crit.list();
 		return searchResult;
 	}

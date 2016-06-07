@@ -24,6 +24,7 @@ public class MovieRepositoryImpl implements MovieRepository {
 		return (long) this.sessionFactory.getCurrentSession().save(movie);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Movie> getMovieByTitle(String title) {
 		// TODO Auto-generated method stub
@@ -33,6 +34,7 @@ public class MovieRepositoryImpl implements MovieRepository {
 		return searchResult;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Movie> getMovieByRating(Ratings rating) {
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(MovieImpl.class)
@@ -41,6 +43,7 @@ public class MovieRepositoryImpl implements MovieRepository {
 		return searchResult;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Movie> getMovieByGenre(Genres genre) {
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(MovieImpl.class)
@@ -67,6 +70,7 @@ public class MovieRepositoryImpl implements MovieRepository {
 		return (Movie) this.sessionFactory.getCurrentSession().get(MovieImpl.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Movie> getMovieByImdbRate(double iMDBRating) {
 		// To do list, need to change it to larger than or less than
