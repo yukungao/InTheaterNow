@@ -66,6 +66,16 @@ public class UserPurchasesHistoryImpl implements UserPurchasesHistory {
 		return operationDateTime;
 	}
 	
+	public UserPurchasesHistoryImpl(long id, User user, Ticket ticket, String operationDateTime) {
+		super();
+		this.id = id;
+		this.user = user;
+		this.ticket = ticket;
+		this.operationDateTime = operationDateTime;
+	}
+	
+	public UserPurchasesHistoryImpl() {}
+	
 	public void setOperationDate(String time) {
 		this.operationDateTime = time;
 	}

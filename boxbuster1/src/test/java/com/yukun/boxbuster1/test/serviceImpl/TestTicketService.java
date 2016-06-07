@@ -65,6 +65,9 @@ public class TestTicketService  extends AbstractJUnit4SpringContextTests {
 		List<Theater> res4 = ticketService.searchTheatersByMovieName("AngryBirds");
 		Assert.assertEquals(1, res4.size());
 		
+		List<Movie> res5 = ticketService.searchMoviesByTheaterName("Harkins");
+		Assert.assertEquals(1, res5.size());
+		
 	}
 	
 	@Test

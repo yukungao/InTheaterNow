@@ -45,7 +45,7 @@ public class TestMovieService extends AbstractJUnit4SpringContextTests {
 	
 	@Test
 	public void getMovieByTitle() {
-		List<Movie> movies = movieService.getMovieByTitle("CaptainAmerica");
+		List<Movie> movies = movieService.getMovieByTitle("SILICONVALLEY");
 		for(Movie element : movies) {
 			System.out.println(element.toString());
 		}
