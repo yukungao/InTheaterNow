@@ -19,11 +19,13 @@ import org.springframework.stereotype.Component;
 
 import com.yukun.boxbuster1.entity.Movie;
 import com.yukun.boxbuster1.entity.Theater;
+import com.yukun.boxbuster1.entity.User;
 import com.yukun.boxbuster1.http.entity.HttpMovie;
 import com.yukun.boxbuster1.http.entity.HttpTheater;
 import com.yukun.boxbuster1.service.MovieService;
 import com.yukun.boxbuster1.service.TheaterService;
 import com.yukun.boxbuster1.service.TicketService;
+import com.yukun.boxbuster1.service.UserService;
 
 @Path("/theaters")
 @Component
@@ -37,6 +39,8 @@ public class TheaterResource {
 	@Autowired
 	private TicketService ticketService;
 
+	@Autowired
+	private UserService userService;
 	
 	@POST
 	@Path("/")
@@ -85,6 +89,19 @@ public class TheaterResource {
 	@Path("/zip={zip}")
 	public List<HttpTheater> getTheaterByZipCode(@PathParam("zip") String zip) {
 		System.out.println("The title passed in is"+zip);
+		List<Theater> res = theaterService.getTheaterByZip(zip);
+		List<HttpTheater> returnList = new ArrayList<>(res.size());
+		for (Theater theater : res) {
+				returnList.add(new HttpTheater(theater));
+		}
+		return returnList;
+	}
+	
+	@GET
+	@Path("/username={username}")
+	public List<HttpTheater> getTheaterNearUser(@PathParam("username") String username) {
+		User user_obj = userService.getUserByName(username,"");
+		String zip = user_obj.getAddress().getZipCode();
 		List<Theater> res = theaterService.getTheaterByZip(zip);
 		List<HttpTheater> returnList = new ArrayList<>(res.size());
 		for (Theater theater : res) {

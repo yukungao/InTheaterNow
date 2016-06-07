@@ -111,6 +111,7 @@ public class MovieResource {
 	private Movie convert(HttpMovie httpMovie) {
 		MovieImpl movie = new MovieImpl();
 		movie.setTitle(httpMovie.title);
+		movie.setGenre(httpMovie.genre);
 		return movie;
 	}
 	

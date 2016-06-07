@@ -33,10 +33,10 @@ public class UserRepositoryImpl implements UserRepository{
 	public List<User> search(String firstName, String lastName) {
 		Criteria crit = this.sessionFactory.getCurrentSession().createCriteria(User.class);
 		if (!StringUtils.isEmpty(firstName)) {
-			crit.add(Restrictions.like("firstName", "%" + firstName + "%"));
+			crit.add(Restrictions.like("firstname", "%" + firstName + "%"));
 		}
 		if (!StringUtils.isEmpty(lastName)) {
-			crit.add(Restrictions.like("lastName", "%" + lastName + "%"));
+			crit.add(Restrictions.like("lastname", "%" + lastName + "%"));
 		}
 		List<User> searchResult = crit.list();
 		return searchResult;

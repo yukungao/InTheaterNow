@@ -8,6 +8,8 @@ public interface UserService {
 	long addUser(User user);
 	
 	User getUser(long userId);
+	
+	User getUserByName(String firstName, String lastName);
 
 	boolean isPinValid(long userId, String pin);	
 

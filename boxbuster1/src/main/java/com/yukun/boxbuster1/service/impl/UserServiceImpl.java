@@ -40,4 +40,10 @@ public class UserServiceImpl implements UserService{
 		userRepository.update(user);
 	}
 
+	@Override
+	public User getUserByName(String firstName, String lastName) {
+		// TODO Auto-generated method stub
+		return userRepository.search(firstName, lastName).get(0);
+	}
+
 }

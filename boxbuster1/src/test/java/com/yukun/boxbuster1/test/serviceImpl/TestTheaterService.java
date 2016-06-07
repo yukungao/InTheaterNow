@@ -85,5 +85,4 @@ public class TestTheaterService extends AbstractJUnit4SpringContextTests {
 	}
 	
 	
-	
 }
