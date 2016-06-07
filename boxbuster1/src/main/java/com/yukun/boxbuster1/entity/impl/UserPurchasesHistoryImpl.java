@@ -32,7 +32,7 @@ public class UserPurchasesHistoryImpl implements UserPurchasesHistory {
 	@JoinColumn(name = "ticket_idticket")
 	private Ticket ticket;
 	
-	@Column(name="operation_datetime")
+	@Column(name="op_date")
 	private String operationDateTime;
 	
 	@Override

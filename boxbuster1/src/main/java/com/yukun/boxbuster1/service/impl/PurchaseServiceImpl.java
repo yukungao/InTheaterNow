@@ -1,5 +1,6 @@
 package com.yukun.boxbuster1.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -9,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import com.yukun.boxbuster1.entity.Ticket;
 import com.yukun.boxbuster1.entity.User;
+import com.yukun.boxbuster1.entity.UserPurchasesHistory;
 import com.yukun.boxbuster1.entity.impl.TicketImpl;
+import com.yukun.boxbuster1.entity.impl.UserPurchasesHistoryImpl;
 import com.yukun.boxbuster1.service.BrowseService;
 import com.yukun.boxbuster1.service.PurchaseService;
 import com.yukun.boxbuster1.service.TicketService;
@@ -43,7 +46,7 @@ public class PurchaseServiceImpl implements PurchaseService{
 	// Return false, if not buy successfully
 	
 	@Override
-	public boolean buyTicket(String movieName, String theaterName, String showDate, User user) {
+	public String buyTicket(String movieName, String theaterName, String showDate, User user) {
 		
 		// Notice that I don't real use showDate here.
 		
@@ -51,21 +54,29 @@ public class PurchaseServiceImpl implements PurchaseService{
 		List<Ticket> tickets = ticketService.searchAvailabeTicket(movieName,theaterName);
 		
 		// If exist, check if user's balance is enough to buy or not
-		if(tickets.size() == 0 ) return false;
+		if(tickets.size() == 0 ) return "There is no available ticket left";
 		Ticket ticket = tickets.get(0);
 		
 		// If could buy, then user need to update balance, and add it to his buy history
 		if(user.getBalance() >= ticket.getPrice()) {
 			((TicketImpl) ticket).setStatus(true);
 			ticketService.update(ticket);
-			// TODO, the Purchase history part
 			
+			// TODO, the Purchase history part
+			UserPurchasesHistory userPurchaseHistory = new UserPurchasesHistoryImpl(ticket);
+			((UserPurchasesHistoryImpl) userPurchaseHistory).setUser(user);
+			String operationDateTime = LocalDateTime.now().toString();
+			((UserPurchasesHistoryImpl) userPurchaseHistory).setOperationDate(operationDateTime);
+			user.addUserPurchasesHistory(userPurchaseHistory);
+			
+			
+			//Update the balance part
 			user.costBalance(ticket.getPrice());
 			userService.updateUser(user);
-			return true;
+			return "Successfully buy the ticket";
 		}
 		
-		return false;
+		return "The balance is not enough";
 	}
 
 }

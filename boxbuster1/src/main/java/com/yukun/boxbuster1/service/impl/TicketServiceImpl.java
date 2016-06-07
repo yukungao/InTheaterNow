@@ -3,7 +3,10 @@ package com.yukun.boxbuster1.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +21,13 @@ import com.yukun.boxbuster1.service.TheaterService;
 import com.yukun.boxbuster1.service.TicketService;
 
 @Service
+@Transactional
 public class TicketServiceImpl implements TicketService{
 	@Autowired
 	private TicketRepository ticketRepository;
 	
 	private void generateQRCode(Ticket ticket) {
-		UUID qrCode = UUID.randomUUID();
+		String qrCode = new String("code" + new Random().nextLong());
 		((TicketImpl) ticket).setQRCode(qrCode);
 	}
 
@@ -124,7 +128,7 @@ public class TicketServiceImpl implements TicketService{
 		List<Ticket> tickets = new ArrayList<Ticket>();
 		
 		//Create the tickets based on the capacity of theater
-		while(numberofSeats > 0) {
+		while(numberofSeats/4 > 0) {
 			
 			Ticket currTicket = new TicketImpl();
 			((TicketImpl) currTicket).setMovie(movie);

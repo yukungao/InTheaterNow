@@ -20,10 +20,10 @@ import com.yukun.boxbuster1.entity.User;
 import com.yukun.boxbuster1.entity.UserPurchasesHistory;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class UserImpl implements User{
 	@Id
-	@Column(name = "iduser")
+	@Column(name = "idusers")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
@@ -42,7 +42,7 @@ public class UserImpl implements User{
 	@Column(name = "balance")
 	private double balance;
 	
-	@OneToMany(mappedBy = "user", targetEntity = UserPurchasesHistoryImpl.class, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", targetEntity = UserPurchasesHistoryImpl.class, cascade = CascadeType.ALL)
 	private List<UserPurchasesHistory> userPurchasesHistory;
 	
 	public UserImpl(){};

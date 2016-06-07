@@ -25,8 +25,8 @@ public class TestMovieService extends AbstractJUnit4SpringContextTests {
 	@Test
 	public void addAndGetMovie() {
 		MovieImpl newMovie = new MovieImpl();
-		newMovie.setTitle("CaptainAmerica");
-		newMovie.setGenre(Genres.ACTION);
+		newMovie.setTitle("Conjuring");
+		newMovie.setGenre(Genres.HORROR);
 
 		long added_id = movieService.addMovie(newMovie);
 		logger.info("movie added " + added_id);

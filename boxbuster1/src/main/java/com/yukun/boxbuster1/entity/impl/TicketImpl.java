@@ -45,7 +45,7 @@ public class TicketImpl implements Ticket {
 	private String movieTime;
 	
 	@Column(name = "qrcode")
-	private UUID qrCode;
+	private String qrCode;
 	
 	@Column(name = "status")
 	private boolean status;
@@ -89,11 +89,11 @@ public class TicketImpl implements Ticket {
 	}
 	
 	@Override
-	public UUID getQRCode() {
+	public String getQRCode() {
 		return qrCode;
 	}
 
-	public void setQRCode(UUID qrCode) {
+	public void setQRCode(String qrCode) {
 		this.qrCode = qrCode;
 	}
 

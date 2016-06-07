@@ -35,13 +35,13 @@ public class TestTheaterService extends AbstractJUnit4SpringContextTests {
 	public void testAddAndGetTheater() {
 		//Step 1: Create Address
 		Address address1 = new TheaterAddressImpl(); 
-		((TheaterAddressImpl) address1).setZipCode("95000");
+		((TheaterAddressImpl) address1).setZipCode("95131");
 		
 		//Step 2: Create Theater and Add it to the database
 		TheaterImpl theater = new TheaterImpl(); 
 		//theater.setAddress();
-		theater.setName("amc1");
-		theater.setSeats(10);
+		theater.setName("Harkins");
+		theater.setSeats(30);
 		long added_id = theaterService.addTheater(theater);
 		
 		/**/
