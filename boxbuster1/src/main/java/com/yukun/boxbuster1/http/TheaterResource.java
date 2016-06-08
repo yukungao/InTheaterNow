@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.jboss.resteasy.annotations.providers.jaxb.Wrapped;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,10 @@ import org.springframework.stereotype.Component;
 import com.yukun.boxbuster1.entity.Movie;
 import com.yukun.boxbuster1.entity.Theater;
 import com.yukun.boxbuster1.entity.User;
+import com.yukun.boxbuster1.entity.impl.TheaterImpl;
 import com.yukun.boxbuster1.http.entity.HttpMovie;
 import com.yukun.boxbuster1.http.entity.HttpTheater;
+import com.yukun.boxbuster1.service.AddressService;
 import com.yukun.boxbuster1.service.MovieService;
 import com.yukun.boxbuster1.service.TheaterService;
 import com.yukun.boxbuster1.service.TicketService;
@@ -42,11 +45,18 @@ public class TheaterResource {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private AddressService addressService;
+	
 	@POST
 	@Path("/")
 	public Response createTheater(HttpTheater newTheater) {
-		return null;
 		
+		Theater newTheaterToAdd = convert(newTheater);
+		long added_id = theaterService.addTheater(newTheaterToAdd);
+		Theater newTheater1 = theaterService.getTheaterById(added_id);
+		return Response.status(Status.CREATED).header("Location", "/theaters/" + newTheater1.getId())
+				.entity(new HttpTheater(newTheater1)).build();
 	}
 	
 	@GET
@@ -122,4 +132,11 @@ public class TheaterResource {
 		return returnList;
 	}
 	
+	
+	private Theater convert(HttpTheater httpTheater) {
+		TheaterImpl theater = new TheaterImpl();
+		theater.setName(httpTheater.name);
+		theater.setSeats(httpTheater.seats);
+		return theater;
+	}
 }
